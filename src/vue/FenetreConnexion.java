@@ -5,6 +5,7 @@
  */
 package vue;
 
+import controleur.ConnexionListener;
 import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -22,10 +23,10 @@ public class FenetreConnexion extends JFrame {
     
     private JPanel accueilPanel;
     private JLabel titre;
-    private JLabel labelNomServer;
+    private JLabel labelNomBdd;
     private JLabel labelLogin;
     private JLabel labelMdp;
-    private JTextField nomServer;
+    private JTextField nomBdd;
     private JTextField login;
     private JTextField mdp;
     private JButton btn_co;
@@ -46,17 +47,21 @@ public class FenetreConnexion extends JFrame {
         
         //Labels
         titre = new JLabel();
-        labelNomServer = new JLabel();
+        labelNomBdd = new JLabel();
         labelLogin = new JLabel();
         labelMdp = new JLabel();
         
         //textfields
-        nomServer = new JTextField() ;
+        nomBdd = new JTextField() ;
         login = new JTextField() ;
         mdp = new JTextField();
         
         //bouton
         btn_co = new JButton("Connexion");
+        
+        //initialisation de l'action listener
+        ConnexionListener cl = new ConnexionListener(this,nomBdd,login,mdp);
+        btn_co.addActionListener(cl);
         
         //bouton de fermeture de la fentre
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,14 +78,14 @@ public class FenetreConnexion extends JFrame {
         titre.setToolTipText("");
 
         //définition des labels
-        labelNomServer.setText("Nom du serveur");
-        labelLogin.setText("login");
-        labelMdp.setText("Mot de passe");
+        labelNomBdd.setText("Nom de la bdd :");
+        labelLogin.setText("login : ");
+        labelMdp.setText("Mot de passe :");
         
         //init des textfields : box layout a besoin de la taille min et max 
-        nomServer.setPreferredSize(new Dimension(150, 25));
-        login.setPreferredSize(new Dimension(150, 25));
-        mdp.setPreferredSize(new Dimension(150, 25));
+        nomBdd.setPreferredSize(new Dimension(150, 30));
+        login.setPreferredSize(new Dimension(150, 30));
+        mdp.setPreferredSize(new Dimension(150, 30));
 
         //init du bouton 
         
@@ -95,18 +100,19 @@ public class FenetreConnexion extends JFrame {
        
        //Panel qui contient le label et le textfield du nomServer
        //panelNomServer.setLayout(new BoxLayout(panelNomServer, BoxLayout.LINE_AXIS));
-       panelNomServer.add(labelNomServer);
-       panelNomServer.add(nomServer);
+       panelNomServer.add(labelNomBdd);
+       panelNomServer.add(nomBdd);
        
        //Panel qui contient le label et le textfield du login
        //panelLogin.setLayout(new BoxLayout(panelLogin, BoxLayout.LINE_AXIS));
        panelLogin.add(labelLogin);
+       panelLogin.add(Box.createHorizontalStrut(10));
        panelLogin.add(login);
        
        //Panel qui contient le label et le textfield du mot de passe
       // panelMdp.setLayout(new BoxLayout(panelMdp, BoxLayout.LINE_AXIS));
        panelMdp.add(labelMdp);
-       panelMdp.add(Box.createRigidArea(new Dimension(0,20)));
+      
        panelMdp.add(mdp);
        
        //Panel qui contient le bouton de soumission

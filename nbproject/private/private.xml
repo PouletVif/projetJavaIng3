@@ -3,8 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/EmyMa/OneDrive/Bureau/projetJavaIng3/src/controleur/GestionEcoleMain.java</file>
-            <file>file:/C:/Users/EmyMa/OneDrive/Bureau/projetJavaIng3/src/vue/ConnexionBddVue.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/EvaluationDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/AnneeDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Inscription.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Annee.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/DAOFactory.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/DAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/vue/FenetreConnexion.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Evaluation.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/ClasseDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Personnel.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/BulletinDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/TrimestreDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/PersonneDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Bulletin.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/DetailBulletinDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Enseignement.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/Connexion.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Classe.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/DetailBulletin.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/EnseignementDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/DAO/InscriptionDAO.java</file>
+            <file>file:/C:/Users/INVITE/Desktop/projetJavaIng3/src/modele/Trimestre.java</file>
         </group>
     </open-files>
 </project-private>
