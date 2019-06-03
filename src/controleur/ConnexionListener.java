@@ -7,7 +7,9 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
+import vue.FenetreModule;
 
 /**
  *
@@ -18,9 +20,11 @@ public class ConnexionListener implements ActionListener {
     private JTextField nomBdd;
     private JTextField login;
     private JTextField mdp;
-
-    public ConnexionListener(JTextField nomBdd, JTextField login, JTextField mdp) {
+    private JFrame fenetreActu;
+    
+    public ConnexionListener(JFrame fenetreActu, JTextField nomBdd, JTextField login, JTextField mdp) {
         
+        this.fenetreActu = fenetreActu;
         this.nomBdd = nomBdd;
         this.login = login;
         this.mdp = mdp;
@@ -30,6 +34,10 @@ public class ConnexionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
        System.out.println(this.nomBdd.getText() + " " + this.login.getText()+" "+this.mdp.getText());
+       this.fenetreActu.dispose();
+       FenetreModule fm = new FenetreModule();
+       fm.setVisible(true);
+       
     }
     
 }

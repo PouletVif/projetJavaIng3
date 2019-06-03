@@ -18,8 +18,7 @@ public class GestionEcoleMain {
         FenetreConnexion fc = new FenetreConnexion();
         fc.setVisible(true);
         
-        FenetreModule fm = new FenetreModule();
-        //fm.setVisible(true);
+
         
     }
 }

@@ -60,7 +60,7 @@ public class FenetreConnexion extends JFrame {
         btn_co = new JButton("Connexion");
         
         //initialisation de l'action listener
-        ConnexionListener cl = new ConnexionListener(nomBdd,login,mdp);
+        ConnexionListener cl = new ConnexionListener(this,nomBdd,login,mdp);
         btn_co.addActionListener(cl);
         
         //bouton de fermeture de la fentre
