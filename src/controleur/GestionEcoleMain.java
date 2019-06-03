@@ -5,6 +5,9 @@
  */
 package controleur;
 
+import vue.FenetreConnexion;
+import vue.FenetreModule;
+
 /**
  *
  * @author EmyMa
@@ -12,6 +15,11 @@ package controleur;
 public class GestionEcoleMain {
     
     public static void main(String args[]){
+        FenetreConnexion fc = new FenetreConnexion();
+        //fc.setVisible(true);
+        
+        FenetreModule fm = new FenetreModule();
+        fm.setVisible(true);
         
     }
 }
