@@ -90,21 +90,18 @@ public class FenetreConnexion extends JFrame {
         //init du bouton 
         
        /**
-         * création des sous-layouts : on les crée puis on ajoutes les composants
+         * création des sous-panels : on les crées puis on ajoutes les composants
        */
         
        //le titre en haut de page 
-       //panelTitre.setLayout(new BoxLayout(panelTitre, BoxLayout.LINE_AXIS));
        //ajouts du composant
        panelTitre.add(titre);
        
        //Panel qui contient le label et le textfield du nomServer
-       //panelNomServer.setLayout(new BoxLayout(panelNomServer, BoxLayout.LINE_AXIS));
        panelNomServer.add(labelNomBdd);
        panelNomServer.add(nomBdd);
        
        //Panel qui contient le label et le textfield du login
-       //panelLogin.setLayout(new BoxLayout(panelLogin, BoxLayout.LINE_AXIS));
        panelLogin.add(labelLogin);
        panelLogin.add(Box.createHorizontalStrut(10));
        panelLogin.add(login);

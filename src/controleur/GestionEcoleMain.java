@@ -7,6 +7,8 @@ package controleur;
 
 import vue.FenetreConnexion;
 import vue.FenetreModule;
+import vue.FenetreRecherche;
+import vue.panels.PanelEleve;
 
 /**
  *
@@ -16,7 +18,12 @@ public class GestionEcoleMain {
     
     public static void main(String args[]){
         FenetreConnexion fc = new FenetreConnexion();
-        fc.setVisible(true);
+        //fc.setVisible(true);
+        FenetreRecherche fr =new FenetreRecherche();
+        PanelEleve pe = new PanelEleve();
+        fr.getContentPane().add(pe);
+        fr.setVisible(true);
+        
         
 
         

@@ -46,7 +46,7 @@ public class FenetreModule extends JFrame {
         btnMaj = new JButton("Mise à jour");
         btnReporting = new JButton("Reporting");
         
-        //bouton de fermeture de la fentre
+        //fermeture de la fenetre
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //fenetre de taille 600 x 600
         this.setSize(600,600);
