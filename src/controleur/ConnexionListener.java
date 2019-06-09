@@ -5,11 +5,17 @@
  */
 package controleur;
 
+
+import DAO.Connexion;
+import DAO.DAOFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import vue.FenetreModule;
+import vue.FenetrePrincipale;
 
 /**
  *
@@ -33,10 +39,21 @@ public class ConnexionListener implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-       System.out.println(this.nomBdd.getText() + " " + this.login.getText()+" "+this.mdp.getText());
-       this.fenetreActu.dispose();
-       FenetreModule fm = new FenetreModule();
-       fm.setVisible(true);
+      
+      
+        try {
+            
+            Connexion conn = new Connexion(this.nomBdd.getText(),this.login.getText(),this.mdp.getText());
+            DAOFactory daoFactory = new DAOFactory(conn);
+            this.fenetreActu.dispose();
+            FenetrePrincipale fp = new FenetrePrincipale(daoFactory);
+            fp.setVisible(true);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionListener.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConnexionListener.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
     

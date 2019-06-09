@@ -27,6 +27,12 @@ public class Connexion {
     private Statement stmt;
     private ResultSet rset;
     private ResultSetMetaData rsetMeta;
+
+
+    public Statement getStmt() {
+        return stmt;
+    }
+
     /**
      * ArrayList public pour les tables
      */
@@ -63,6 +69,10 @@ public class Connexion {
         stmt = conn.createStatement();
     }
 
+    
+    
+
+
     /**
      * Constructeur avec 4 paramètres : username et password ECE, login et
      * password de la BDD à distance sur le serveur de l'ECE
@@ -73,7 +83,11 @@ public class Connexion {
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
+
+    /*public Connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
+=======
     public Connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
+>>>>>>> 557cffbf159a5bd7bb434aafa61ffe3519065728
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
 
@@ -93,7 +107,9 @@ public class Connexion {
             stmt = conn.createStatement();
 
         }
-    }
+<<<<<<< HEAD
+    }*/
+
 
     /**
      * Méthode qui ajoute la table en parametre dans son ArrayList

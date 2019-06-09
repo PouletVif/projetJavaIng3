@@ -53,8 +53,11 @@ public class FenetreConnexion extends JFrame {
         
         //textfields
         nomBdd = new JTextField() ;
+        nomBdd.setText("gestionecole");
         login = new JTextField() ;
+        login.setText("root");
         mdp = new JTextField();
+  
         
         //bouton
         btn_co = new JButton("Connexion");

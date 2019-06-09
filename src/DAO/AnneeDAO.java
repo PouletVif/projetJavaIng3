@@ -5,18 +5,44 @@
  */
 package DAO;
 import modele.Annee;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 /**
  *
  * @author INVITE
  */
-    public class AnneeDAO extends DAO<Annee> {
-  public AnneeDAO(Connection conn) {
+
+public class AnneeDAO extends DAO<Annee> {
+    
+    
+  public AnneeDAO(Connexion conn) {
     super(conn);
   }
-
+/**
+ * 
+ * @param obj
+ * @return 
+ */
+  @Override
   public boolean create(Annee obj) {
-    return false;
+    int resultat;
+    //String requete ="INSERT INTO annee('id_annee') VALUES("+obj.getId_annee()+")";
+    String requete ="INSERT INTO annee(id_annee) VALUES('"+ obj.getId_annee() +"')";
+    try{
+        resultat= connect.getStmt().executeUpdate(requete);
+        System.out.println("Annee ajoutée");
+        return true;
+    } catch (Exception e) {
+        System.out.println("Annee n'as pas pu être ajoutée");
+        return false;
+    }  
   }
+
 
   public boolean delete(Annee obj) {
     return false;
@@ -27,7 +53,11 @@ import modele.Annee;
   }
   
    //méthode générique openclassroom
+
+ /* public Annee find(int id) {
+=======
   public Annee find(int id) {
+>>>>>>> 557cffbf159a5bd7bb434aafa61ffe3519065728
     Annee annee = new Annee();      
 
     try {
@@ -44,4 +74,11 @@ import modele.Annee;
     }
     return annee;
   }
+<<<<<<< HEAD
+*/
+
+    @Override
+    public Annee find(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

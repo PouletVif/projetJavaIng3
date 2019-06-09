@@ -6,7 +6,6 @@
 package controleur;
 
 import vue.FenetreConnexion;
-import vue.FenetreModule;
 
 /**
  *
@@ -15,10 +14,9 @@ import vue.FenetreModule;
 public class GestionEcoleMain {
     
     public static void main(String args[]){
+        //DAOFactory
         FenetreConnexion fc = new FenetreConnexion();
         fc.setVisible(true);
-        
 
-        
     }
 }

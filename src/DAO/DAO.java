@@ -7,7 +7,8 @@ package DAO;
  */
 public abstract class DAO<O> {
     
-    protected Connexion connect = null;
+  protected Connexion connect = null;
+
    //ajouter les méthodes demandées dans le cdc
   public DAO(Connexion conn){
     this.connect = conn;

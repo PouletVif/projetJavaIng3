@@ -11,34 +11,46 @@ package DAO;
  */
 public class DAOFactory {
     //ligne de connexion A ADAPTER
-  //  protected static final Connexion conn = SdzConnexion.getInstance();  
 
+    private static Connexion conn;
  /**
   * Retourne un objet Classe interagissant avec la BDD
+     * @param conn
   * @return DAO
   */
+    public DAOFactory(Connexion conn)
+    {
+        this.conn=conn;
+    }
+    
   public static DAO getAnneeDAO(){
     return new AnneeDAO(conn);
   }
+  /*
     public static DAO getBulletinDAO(){
     return new BulletinDAO(conn);
   }
-      public static DAO getClasseDAO(){
+    public static DAO getClasseDAO(){
     return new ClasseDAO(conn);
   }
-        public static DAO getEnseignementDAO(){
+    public static DAO getEnseignementDAO(){
     return new EnseignementDAO(conn);
   }
-          public static DAO getEvaluationDAO(){
+    public static DAO getEvaluationDAO(){
     return new EvaluationDAO(conn);
   }
-            public static DAO getInscriptionDAO(){
+    public static DAO getInscriptionDAO(){
     return new InscriptionDAO(conn);
   }
-             public static DAO getPersonneDAO(){
+    public static DAO getPersonneDAO(){
     return new PersonneDAO(conn);
   }
-               public static DAO getTrimestreDAO(){
+    public static DAO getTrimestreDAO(){
     return new TrimestreDAO(conn);
-  }
+  }*/
+
+    public Connexion getConn() {
+        return conn;
+    }
+  
 }
