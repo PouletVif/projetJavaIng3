@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import vue.FenetrePrincipale;
+import vue.panels.PanelAccueil;
 
 /**
  *
@@ -47,9 +48,12 @@ public class ConnexionListener implements ActionListener {
             DAOFactory daoFactory = new DAOFactory(conn);
             this.fenetreActu.dispose();
             FenetrePrincipale fp = new FenetrePrincipale(daoFactory);
+            PanelAccueil pa = new PanelAccueil();
+            fp.getContentPane().add(pa);
             fp.setVisible(true);
             
         } catch (SQLException ex) {
+            System.out.println("Connexion a échoué");
             Logger.getLogger(ConnexionListener.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConnexionListener.class.getName()).log(Level.SEVERE, null, ex);

@@ -15,6 +15,13 @@ public class Personne {
     String prenom;
     boolean est_enseignant;
 
+    public Personne(int id_personne, String nom, String prenom, boolean est_enseignant) {
+        this.id_personne = id_personne;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.est_enseignant = est_enseignant;
+    }
+
     public int getId_personne() {
         return id_personne;
     }

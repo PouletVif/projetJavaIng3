@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import modele.Inscription;
 
 /**
  *
@@ -48,11 +51,12 @@ public class PanelEleve extends JPanel{
     private JTable tabEleve;
     private JScrollPane tabScroll; 
      private DAOFactory daoFactory;
-    
+    ArrayList<Inscription> listeEleve ;
     //Eventuellement un JTextfields et un JButton pour la recherche d'éléments
 
-    public PanelEleve(DAOFactory daoFactory) {
+    public PanelEleve(DAOFactory daoFactory, ArrayList<Inscription> listeEleve ) {
          this.daoFactory = daoFactory;
+         this.listeEleve = listeEleve;
          this.setLayout(new FlowLayout());
          init();
     }
@@ -81,66 +85,34 @@ public class PanelEleve extends JPanel{
         ajouterEleve = new JButton("Ajouter") ;
         modifierEleve = new JButton("Modifier") ;
         
-        //tableau 
         String [] nomColonnes = {"Id","Nom","Prenom","Classe","Niveau"};
-        Object [][] data = {
-            {"1","Mahouni","Emy","TD08","ING3"},
-            {"2","Saute","Alexis","TD08","ING3"},
-            {"3","Maxime","Tran","TD10","ING3"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-            {"4","LeBrishoual","Thomas","TD12","ING2"},
-        };
         
-        tabEleve = new JTable(data, nomColonnes);
+        
+       
+        //tableau 
+        
+        tabEleve = new JTable(); 
         tabEleve.setPreferredScrollableViewportSize(new Dimension(650,500));
         tabEleve.setFillsViewportHeight(true);
         
-        tabScroll = new JScrollPane(tabEleve);
+        DefaultTableModel model =new DefaultTableModel(0,0);
+        model.setColumnIdentifiers(nomColonnes);
+        tabEleve.setModel(model);
+        Object[] ligne = new Object[5];
+        
+        for(int i = 0; i<this.listeEleve.size(); i++)
+        {
+            ligne[0] = this.listeEleve.get(i).getEleve().getId_personne();
+            ligne[1] =this.listeEleve.get(i).getEleve().getNom();
+            ligne[2] = this.listeEleve.get(i).getEleve().getPrenom();
+            ligne[3] = this.listeEleve.get(i).getClasse().getNom();
+            ligne[4] = this.listeEleve.get(i).getClasse().getNiveau();
+            model.addRow(ligne);
+        }
+
         
         
-        
+         tabScroll = new JScrollPane(tabEleve);
         
          //mise en place du titre
         titre.setFont(new Font("Times New Roman", 1, 35)); // NOI18N

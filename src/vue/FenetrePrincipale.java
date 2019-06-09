@@ -6,9 +6,12 @@
 package vue;
 
 import DAO.DAOFactory;
+import controleur.listenerMenu.AccueilListener;
 import controleur.listenerMenu.ConsulterEleveListener;
 import controleur.listenerMenu.ConsulterProfListener;
 import controleur.listenerMenu.GestionAnneeListener;
+import controleur.listenerMenu.GestionBulletinListener;
+import controleur.listenerMenu.GestionClassesListener;
 import controleur.listenerMenu.GestionEleveListener;
 import controleur.listenerMenu.GestionProfListener;
 import javax.swing.JFrame;
@@ -77,13 +80,23 @@ public class FenetrePrincipale extends JFrame {
       gestionBulletins = new JMenuItem("Gestions bulletins") ;
       gestionAnnee = new JMenuItem("Gestions année") ;
       
-      //Actionlisteners
+      //Actionlisteners de la barre de navigation
       listeEleve.addActionListener(new GestionEleveListener(this,this.daoFactory));
+      
       profilEleve.addActionListener(new ConsulterEleveListener(this,this.daoFactory));
+      
       listeProf.addActionListener(new GestionProfListener(this,this.daoFactory));
+      
       profilProf.addActionListener(new ConsulterProfListener(this,this.daoFactory));
-      //profilEleve.addActionListener(new ConsulterEleveListener(this,this.daoFactory));
+      
       gestionAnnee.addActionListener(new GestionAnneeListener(this,this.daoFactory));
+      
+      gestionClasses.addActionListener(new GestionClassesListener(this,this.daoFactory));
+      
+      gestionBulletins.addActionListener(new GestionBulletinListener(this,this.daoFactory));
+      
+      //Menu listener pour accueil car ce dernier est un JMenu. 
+      accueil.addMenuListener(new AccueilListener(this));
       
       //Ajout des menu item dans les JMenus qui leur sont destinés
       eleves.add(listeEleve);

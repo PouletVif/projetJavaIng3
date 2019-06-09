@@ -5,10 +5,14 @@
  */
 package controleur.listenerMenu;
 
+import DAO.DAO;
 import DAO.DAOFactory;
+import DAO.InscriptionDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import modele.Inscription;
 import vue.panels.PanelEleve;
 
 /**
@@ -26,7 +30,10 @@ public class GestionEleveListener implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-       PanelEleve pe = new PanelEleve(this.daoFactory);
+        InscriptionDAO inscriptionDAO = new InscriptionDAO(daoFactory.getConn());
+        ArrayList<Inscription> liste =inscriptionDAO.listeEleve();
+        
+       PanelEleve pe = new PanelEleve(this.daoFactory, liste);
 
        fenetreActuelle.getContentPane().removeAll();
        fenetreActuelle.getContentPane().add(pe);

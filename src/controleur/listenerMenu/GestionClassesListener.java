@@ -9,6 +9,7 @@ import DAO.DAOFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import vue.panels.PanelGestionClasses;
 
 /**
  *
@@ -26,7 +27,11 @@ public class GestionClassesListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       PanelGestionClasses pgc = new PanelGestionClasses(this.daoFactory);
+       fenetreActuelle.getContentPane().removeAll();
+       fenetreActuelle.getContentPane().add(pgc);
+       fenetreActuelle.getContentPane().validate();
+       fenetreActuelle.getContentPane().repaint();
     }
     
 }

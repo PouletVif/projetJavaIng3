@@ -16,6 +16,13 @@ public class Classe {
     String niveau;
     int annee_classe;
 
+    public Classe(int id_classe, String nom, String niveau, int annee_classe) {
+        this.id_classe = id_classe;
+        this.nom = nom;
+        this.niveau = niveau;
+        this.annee_classe = annee_classe;
+    }
+
     public int getId_classe() {
         return id_classe;
     }
