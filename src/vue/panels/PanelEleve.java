@@ -5,10 +5,11 @@
  */
 package vue.panels;
 
+import DAO.DAOFactory;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -33,6 +34,7 @@ public class PanelEleve extends JPanel{
     private JPanel panelBtnSM;
     private JPanel panelBtnAj;
     private JPanel panelForm;
+    private JPanel panelAll;
     private JButton supprimerEleve;
     private JButton ajouterEleve;
     private JButton modifierEleve;
@@ -45,11 +47,12 @@ public class PanelEleve extends JPanel{
     private JLabel labelPrenom;
     private JTable tabEleve;
     private JScrollPane tabScroll; 
+     private DAOFactory daoFactory;
     
     //Eventuellement un JTextfields et un JButton pour la recherche d'éléments
 
-    public PanelEleve() {
-        
+    public PanelEleve(DAOFactory daoFactory) {
+         this.daoFactory = daoFactory;
          this.setLayout(new FlowLayout());
          init();
     }
@@ -60,12 +63,13 @@ public class PanelEleve extends JPanel{
         panelDroite = new JPanel();
         panelGauche = new JPanel();
         panelTitre = new JPanel();
-        panelId = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelPrenom = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelNom = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelBtnSM = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelBtnAj = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelForm = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panelId = new JPanel();
+        panelPrenom = new JPanel();
+        panelNom = new JPanel();
+        panelBtnSM = new JPanel();
+        panelBtnAj = new JPanel();
+        panelForm = new JPanel();
+        panelAll = new JPanel();
         id = new JTextField();
         prenom = new JTextField();
         nom = new JTextField();
@@ -77,8 +81,69 @@ public class PanelEleve extends JPanel{
         ajouterEleve = new JButton("Ajouter") ;
         modifierEleve = new JButton("Modifier") ;
         
+        //tableau 
+        String [] nomColonnes = {"Id","Nom","Prenom","Classe","Niveau"};
+        Object [][] data = {
+            {"1","Mahouni","Emy","TD08","ING3"},
+            {"2","Saute","Alexis","TD08","ING3"},
+            {"3","Maxime","Tran","TD10","ING3"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+            {"4","LeBrishoual","Thomas","TD12","ING2"},
+        };
+        
+        tabEleve = new JTable(data, nomColonnes);
+        tabEleve.setPreferredScrollableViewportSize(new Dimension(650,500));
+        tabEleve.setFillsViewportHeight(true);
+        
+        tabScroll = new JScrollPane(tabEleve);
+        
+        
+        
+        
          //mise en place du titre
-        titre.setFont(new Font("Times New Roman", 1, 18)); // NOI18N
+        titre.setFont(new Font("Times New Roman", 1, 35)); // NOI18N
         titre.setText("Informations élèves");
         titre.setToolTipText("");
 
@@ -108,32 +173,43 @@ public class PanelEleve extends JPanel{
         //initialisation des jpanels qui constituent le formulaire
         panelId.add(labelId);
         panelId.add(id);
-        
+        //ligne nom
         panelNom.add(labelNom);
         panelNom.add(nom);
-        
+        //ligne prenom
         panelPrenom.add(labelPrenom);
         panelPrenom.add(prenom);
-        
+        //ligne boutons Supprimer modifier
         panelBtnSM.add(supprimerEleve);
         panelBtnSM.add(modifierEleve);
-        
+        //ligne bouton ajouter
         panelBtnAj.add(ajouterEleve);
              
         
         //ajout du formulaire dans un sous-panel ayant un gridlayout (2,2)
         panelForm.setLayout(new BoxLayout(panelForm, BoxLayout.PAGE_AXIS));
         panelForm.add(panelId);
+        panelForm.add(Box.createRigidArea(new Dimension(0,15)));
         panelForm.add(panelNom);
+        panelForm.add(Box.createRigidArea(new Dimension(0,15)));
         panelForm.add(panelPrenom);
+        panelForm.add(Box.createRigidArea(new Dimension(0,15)));
         panelForm.add(panelBtnSM);
+        panelForm.add(Box.createRigidArea(new Dimension(0,5)));
         panelForm.add(panelBtnAj);
        
+        //ajout des sous-panels dans les panels gauche et droite
+        panelGauche.add(panelForm);
+        panelDroite.add(tabScroll);
+        panelAll.setLayout(new FlowLayout());
+        panelAll.add(panelGauche);
+        panelAll.add(Box.createHorizontalStrut(95));
+        panelAll.add(panelDroite);
+        
         //ajout des sous-panels dans le panel principal en colonne
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.add(panelTitre);
-        this.add(Box.createRigidArea(new Dimension(5,0)));
-        this.add(panelForm);
+        this.add(panelAll);
         
         //pack(); 
     }
